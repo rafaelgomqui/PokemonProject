@@ -7,7 +7,7 @@ import type { pokemonType } from "./PokemonInterface";
 
 function PokemonList(props: { selectPokemon: (pokemon: pokemonType) => void }) {
 
-    const [pokemons, setPokemons] = useState([] as { id: number; name: string; sprites: { front_default: string }; stats: { base_stat: number }[] }[]);
+    const [pokemons, setPokemons] = useState([] as { pokemon: pokemonType }[]);
 
     useEffect(() => {
         getPokemons(1, 10);
@@ -15,7 +15,7 @@ function PokemonList(props: { selectPokemon: (pokemon: pokemonType) => void }) {
 
     const fetchPokemon = async (index: number) => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${index}`);
-        const data = await response.json();
+        const data: pokemonType = await response.json();
         return data;
     }
 
@@ -27,13 +27,13 @@ function PokemonList(props: { selectPokemon: (pokemon: pokemonType) => void }) {
             pkmArr.push(pokemon);
         }
 
-        setPokemons(pkmArr);
+        setPokemons(pkmArr.map(pokemon => ({ pokemon })));
     }
 
-    const pokemonCards = pokemons.map((pokemon: { id: number; name: string; sprites: { front_default: string }; stats: { base_stat: number }[] }) => (
+    const pokemonCards = pokemons.map((pokemon: { pokemon: pokemonType }) => (
         <PokemonCard
-            key={pokemon.id}
-            pokemon={pokemon}
+            key={pokemon.pokemon.id}
+            pokemon={pokemon.pokemon}
             selectPokemon={props.selectPokemon}
         />
     ));
