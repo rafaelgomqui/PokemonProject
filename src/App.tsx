@@ -2,10 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import PokemonList from './components/PokemonList'
 import PokemonDetails from './components/PokemonDetails';
+import type { pokemonType } from './components/PokemonInterface';
 
 function App() {
 
-  const [selectedPokemon, setSelectedPokemon] = useState();
+  const [selectedPokemon, setSelectedPokemon] = useState<pokemonType | null>(null);
 
   return (
     <>

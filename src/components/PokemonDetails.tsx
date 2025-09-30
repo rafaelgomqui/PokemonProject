@@ -1,6 +1,7 @@
 import "./PokemonDetails.css"
+import type { pokemonType } from "./PokemonInterface";
 
-function PokemonDetails(props: any) {
+function PokemonDetails(props: { pokemon: pokemonType }) {
     const { pokemon } = props;
 
     return (

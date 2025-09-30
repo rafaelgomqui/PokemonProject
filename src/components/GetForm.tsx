@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function GetForm(props: any) {
+function GetForm(props: { getPokemons: (from: number, to: number) => void }) {
     const [from, setFrom] = useState<string>('');
     const [to, setTo] = useState<string>('');
 

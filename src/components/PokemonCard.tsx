@@ -1,6 +1,7 @@
 import "./PokemonCard.css"
+import type { pokemonType } from "./PokemonInterface";
 
-function PokemonCard(props: any) {
+function PokemonCard(props: { pokemon: pokemonType; selectPokemon: (pokemon: pokemonType) => void }) {
   const { pokemon, selectPokemon } = props;
 
   return (
