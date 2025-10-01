@@ -11,7 +11,7 @@ function GetForm(props: { getPokemons: (from: number, to: number) => void }) {
     const handleToInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTo(e.target.value);
     }
-
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         props.getPokemons(Number(from), Number(to));
